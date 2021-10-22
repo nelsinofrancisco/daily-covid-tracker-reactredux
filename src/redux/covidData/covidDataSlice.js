@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import countryList from '../../utils/countriesList';
 
-const TODAY_DATE = '2021-10-21';
+const TODAY_DATE = new Date().toISOString().slice(0, 10);
 
 const NARRATIVA_API = `https://api.covid19tracking.narrativa.com/api/${TODAY_DATE}`;
 
