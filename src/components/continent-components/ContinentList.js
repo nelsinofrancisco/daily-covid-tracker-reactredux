@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 /* eslint-disable camelcase */
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -15,7 +14,6 @@ import {
 } from '../../redux/covidData/covidDataSlice';
 
 const ContinentList = () => {
-  // eslint-disable-next-line no-unused-vars
   const {
     continent,
     continentCountries,
