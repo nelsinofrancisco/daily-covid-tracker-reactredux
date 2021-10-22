@@ -8,6 +8,8 @@ import store from './redux/configureStore';
 import { getCovidData } from './redux/covidData/covidDataSlice';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
+import ContinentPage from './components/ContinentPage';
+import CountryPage from './components/CountryPage';
 
 const App = () => {
   useEffect(() => {
@@ -21,8 +23,13 @@ const App = () => {
           <Header />
           <HomePage />
         </Route>
-        <Route path="*">
-          <></>
+        <Route exact path="/continent/:continent">
+          <Header />
+          <ContinentPage />
+        </Route>
+        <Route exact path="/continent/:continent/country/:country">
+          <Header />
+          <CountryPage />
         </Route>
       </Switch>
     </Router>

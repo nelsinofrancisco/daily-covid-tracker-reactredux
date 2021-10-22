@@ -8,7 +8,7 @@ const HomeStatsStyles = {
     flexDirection: 'column',
   },
   statsHeader: {
-    background: 'linear-gradient(145deg, rgba(57,88,146,1) 17%, rgba(85,132,219,1) 52%, rgba(57,88,146,1) 87%)',
+    background: 'linear-gradient(90deg, rgba(57,88,146,1) 17%, rgba(85,132,219,1) 52%, rgba(57,88,146,1) 87%)',
     padding: '0.5rem',
   },
   statsHeaderTitle: {
@@ -85,9 +85,9 @@ const HomeStats = () => {
           <p style={HomeStatsStyles.statHeaderAux}>Today deaths</p>
         </div>
       </div>
-      <div style={{ ...HomeStatsStyles.displayFlex, ...HomeStatsStyles.backgroundLight }}>
+      <div style={{ ...HomeStatsStyles.displayFlex, backgroundColor: 'var(--lighter-bc-color)' }}>
         <div style={{
-          ...HomeStatsStyles.flexGrow, ...HomeStatsStyles.displayFlex, justifyContent: 'center', alignItems: 'center',
+          ...HomeStatsStyles.flexGrow, ...HomeStatsStyles.displayFlex, justifyContent: 'center', alignItems: 'center', backgroundColor: 'var(--primary-bc-color)', padding: '0.5rem 0.25rem 0.5rem 0.5rem', width: '50%',
         }}
         >
           <div style={{ textAlign: 'center', marginRight: '0.5rem' }}>
@@ -106,7 +106,7 @@ const HomeStats = () => {
           </div>
         </div>
         <div style={{
-          ...HomeStatsStyles.flexGrow, ...HomeStatsStyles.displayFlex, justifyContent: 'center', alignItems: 'center',
+          ...HomeStatsStyles.flexGrow, ...HomeStatsStyles.displayFlex, justifyContent: 'center', alignItems: 'center', backgroundColor: 'var(--darker-bc-color)', padding: '0.5rem 0.5rem 0.5rem 0.25rem', width: '50%',
         }}
         >
           <div style={{ textAlign: 'center', marginRight: '0.5rem' }}>
