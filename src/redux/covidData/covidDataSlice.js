@@ -16,7 +16,7 @@ const initialState = {
   filtered_country: false,
   country: null,
   selected_country: [],
-  city: null,
+  region: null,
 };
 
 export const getCovidData = createAsyncThunk(
@@ -44,6 +44,7 @@ const covidDataSlice = createSlice({
       );
       return { ...state, country: action.payload, selected_country: [...countryRegions] };
     },
+    selectRegion: (state, action) => ({ ...state, region: action.payload }),
     filterCountries: (state, action) => {
       const continentCountries = state.data.countries.filter(
         (obj) => countryList[action.payload].includes(obj.id),
@@ -76,6 +77,6 @@ const covidDataSlice = createSlice({
 
 export const {
   selectContinent, filterCountries, selectCountry, filterCountry,
-  clearFilter,
+  clearFilter, selectRegion,
 } = covidDataSlice.actions;
 export default covidDataSlice.reducer;

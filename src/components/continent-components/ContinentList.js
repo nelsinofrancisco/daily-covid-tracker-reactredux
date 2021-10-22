@@ -46,7 +46,11 @@ const ContinentList = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              store.dispatch(filterCountry(e.target.children[0].value.toLowerCase()));
+              if (e.target.children[0].value === '') {
+                store.dispatch(clearFilter());
+              } else {
+                store.dispatch(filterCountry(e.target.children[0].value.toLowerCase()));
+              }
               e.target.children[0].value = '';
             }}
             className="form-width"
@@ -54,7 +58,7 @@ const ContinentList = () => {
             <input className="dft-Input" placeholder="Filter by Country" />
             <button className="dft-Button" type="submit">Filter</button>
           </form>
-          <p style={{ marginRight: '0.5rem', marginLeft: '0.5rem' }}>{ (filtered_country.length > 0) ? filtered_country[0].name : ''}</p>
+          <p style={{ marginRight: '0.5rem', marginLeft: '0.5rem' }}>{ (filtered_country.length > 0) ? 'clear filter' : ''}</p>
           { filtered_country
           && (
           <IoIosCloseCircle
@@ -100,7 +104,7 @@ const ContinentList = () => {
                 }}
                 >
                   <h2 style={{ fontSize: '14px' }}>{obj.name}</h2>
-                  <p style={{ fontSize: '14px', fontWeight: '600' }}>{obj.today_confirmed}</p>
+                  <p style={{ fontSize: '14px', fontWeight: '600' }}>{`${obj.today_confirmed} total cases`}</p>
                 </div>
               </div>
             </NavLink>
