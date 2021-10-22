@@ -3,10 +3,12 @@
 :root {
   --primary-bc-color: #4369b2;
   --lighter-bc-color: #5584db;
-  --lighter-bc-opaque: #5584dbf3;
+  --medium-bc-color: #4978ce;
   --darker-bc-color: #395892;
   --title-font: 'Roboto', sans-serif;
   --secundary-font-color: #fafd30;
+  --close-btn-color: #9b2226;
+  --filter-btn-color: #f79a4d;
 }
 
 * {
@@ -20,4 +22,39 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #fff;
+}
+
+.active,
+.active:active {
+  color: #fff;
+  text-decoration: none;
+}
+
+.dft-Input,
+.dft-Button {
+  border: none;
+  padding: 0.2rem;
+  border-radius: 0;
+}
+
+.dft-Input {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  width: calc((100vw / 2 - 0.5rem) * 0.7);
+  max-width: 400px;
+}
+
+.dft-Button {
+  background-color: var(--filter-btn-color);
+  color: #ebebeb;
+  font-weight: 600;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  width: calc((100vw / 2 - 0.5rem) * 0.3);
+  max-width: 75px;
+}
+
+.form-width {
+  width: calc(100vw / 2 - 0.5rem);
+  display: flex;
 }
