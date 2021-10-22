@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { BsArrowRightCircle } from 'react-icons/bs';
