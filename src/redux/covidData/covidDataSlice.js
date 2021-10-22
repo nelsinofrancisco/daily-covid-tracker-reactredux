@@ -12,7 +12,7 @@ const initialState = {
   data: [],
   error: {},
   continent: null,
-  continentCountries: [],
+  continent_countries: [],
   filtered_country: false,
   country: null,
   selected_country: [],
@@ -39,20 +39,20 @@ const covidDataSlice = createSlice({
   reducers: {
     selectContinent: (state, action) => ({ ...state, continent: action.payload }),
     selectCountry: (state, action) => {
-      const countryRegions = state.continentCountries.filter(
+      const countryRegions = state.continent_countries.filter(
         (country) => action.payload === country.name,
       );
       return { ...state, country: action.payload, selected_country: [...countryRegions] };
     },
     selectRegion: (state, action) => ({ ...state, region: action.payload }),
     filterCountries: (state, action) => {
-      const continentCountries = state.data.countries.filter(
+      const continent_countries = state.data.countries.filter(
         (obj) => countryList[action.payload].includes(obj.id),
       );
-      return { ...state, continentCountries: [...continentCountries] };
+      return { ...state, continent_countries: [...continent_countries] };
     },
     filterCountry: (state, action) => {
-      const filtered_country = state.continentCountries.filter(
+      const filtered_country = state.continent_countries.filter(
         (obj) => obj.id.includes(action.payload),
       );
       return { ...state, filtered_country: [...filtered_country] };

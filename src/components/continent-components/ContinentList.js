@@ -14,13 +14,16 @@ import {
 } from '../../redux/covidData/covidDataSlice';
 
 const ContinentList = () => {
-  const {
-    continent,
-    continentCountries,
-    filtered_country,
-  } = useSelector((state) => state.covidData);
-  const bcColors = ['var(--lighter-bc-color)', 'var(--medium-bc-color)', 'var(--primary-bc-color)', 'var(--darker-bc-color)'];
-  const countries = (filtered_country) || continentCountries;
+  const { continent, continent_countries, filtered_country } = useSelector(
+    (state) => state.covidData,
+  );
+  const bcColors = [
+    'var(--lighter-bc-color)',
+    'var(--medium-bc-color)',
+    'var(--primary-bc-color)',
+    'var(--darker-bc-color)',
+  ];
+  const countries = filtered_country || continent_countries;
 
   useEffect(() => {
     store.dispatch(filterCountries(continent));
@@ -36,10 +39,11 @@ const ContinentList = () => {
           backgroundColor: 'var(--lighter-bc-color)',
         }}
       >
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+          }}
         >
           <form
             onSubmit={(e) => {
@@ -47,34 +51,42 @@ const ContinentList = () => {
               if (e.target.children[0].value === '') {
                 store.dispatch(clearFilter());
               } else {
-                store.dispatch(filterCountry(e.target.children[0].value.toLowerCase()));
+                store.dispatch(
+                  filterCountry(e.target.children[0].value.toLowerCase()),
+                );
               }
               e.target.children[0].value = '';
             }}
             className="form-width"
           >
             <input className="dft-Input" placeholder="Filter by Country" />
-            <button className="dft-Button" type="submit">Filter</button>
+            <button className="dft-Button" type="submit">
+              Filter
+            </button>
           </form>
-          <p style={{ marginRight: '0.5rem', marginLeft: '0.5rem' }}>{ (filtered_country.length > 0) ? 'clear filter' : ''}</p>
-          { filtered_country
-          && (
-          <IoIosCloseCircle
-            style={{ color: 'var(--close-btn-color)' }}
-            size={20}
-            onClick={() => { store.dispatch(clearFilter()); }}
-          />
+          <p style={{ marginRight: '0.5rem', marginLeft: '0.5rem' }}>
+            {filtered_country.length > 0 ? 'clear filter' : ''}
+          </p>
+          {filtered_country && (
+            <IoIosCloseCircle
+              style={{ color: 'var(--close-btn-color)' }}
+              size={20}
+              onClick={() => {
+                store.dispatch(clearFilter());
+              }}
+            />
           )}
         </div>
       </div>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        color: '#fff',
-        borderTop: '2px solid var(--darker-bc-color)',
-      }}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          color: '#fff',
+          borderTop: '2px solid var(--darker-bc-color)',
+        }}
       >
-        { countries.map((obj, index) => {
+        {countries.map((obj, index) => {
           document.querySelector('html').style.backgroundColor = bcColors[bcColors.length % (index + 1)];
 
           return (
@@ -84,25 +96,32 @@ const ContinentList = () => {
               onClick={() => store.dispatch(selectCountry(obj.name))}
               className="active"
             >
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-end',
-                width: '100%',
-                flexGrow: '2',
-                backgroundColor: `${bcColors[index % bcColors.length]}`,
-                padding: '0.5rem',
-              }}
-              >
-                <BsArrowRightCircle />
-                <div style={{
+              <div
+                style={{
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'flex-end',
+                  width: '100%',
+                  flexGrow: '2',
+                  backgroundColor: `${bcColors[index % bcColors.length]}`,
+                  padding: '0.5rem',
                 }}
+              >
+                <BsArrowRightCircle />
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-end',
+                  }}
                 >
                   <h2 style={{ fontSize: '14px' }}>{obj.name}</h2>
-                  <p style={{ fontSize: '14px', fontWeight: '600' }}>{`${obj.today_confirmed} total cases`}</p>
+                  <p
+                    style={{ fontSize: '14px', fontWeight: '600' }}
+                  >
+                    {`${obj.today_confirmed} total cases`}
+
+                  </p>
                 </div>
               </div>
             </NavLink>
