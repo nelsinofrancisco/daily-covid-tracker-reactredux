@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page tests HomePage matches snapshot 1`] = `
+Object {
+  "then": [Function],
+}
+`;
+
+exports[`Home page tests Link Interaction Test if new page is rendered 1`] = `
+Object {
+  "then": [Function],
+}
+`;
